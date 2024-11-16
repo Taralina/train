@@ -7,7 +7,7 @@ import io
 # Загрузка предобученной модели
 model = models.resnet18(pretrained=False)
 model.fc = torch.nn.Linear(model.fc.in_features, 11)  # Здесь должно быть количество классов, которое у вас есть
-model.load_state_dict(torch.load("model_resnet18.pth"))
+model.load_state_dict(torch.load("model_resnet18.pth", map_location=torch.device('cpu')))
 model.eval()
 
 # Определение преобразований для изображения
